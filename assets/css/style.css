@@ -1,0 +1,421 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #fafaf9; /* stone-50 */
+}
+::-webkit-scrollbar-thumb {
+  background: #b8c490; /* olive-300 */
+  border-radius: 4px;
+}
+
+/* Navigation Active Link */
+nav a.active {
+  color: #4a5825; /* olive-700 */
+  font-weight: 600;
+}
+
+/* Fade-in Animations for Sections */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card Hover Effects */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(90, 107, 45, 0.15);
+}
+
+/* Section Title spacing */
+.section-title {
+  position: static;
+  margin-bottom: 1.5rem; /* extra space below heading */
+}
+
+/* Skill badges – magnetic + hover lift */
+.skill-badge {
+  --mx: 0px;
+  --my: 0px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid #d4dcb8;
+  background-color: #f5f7f0;
+  padding: 0.375rem 1rem;
+  font-size: 0.9375rem;
+  color: #4a5825;
+  margin: 0.3125rem;
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  transform: translate(var(--mx), var(--my));
+  cursor: default;
+}
+.skill-badge:hover {
+  transform: translate(var(--mx), var(--my)) scale(1.1);
+  box-shadow: 0 4px 14px rgba(90, 107, 45, 0.22);
+  background-color: #e8edd8;
+}
+@media (prefers-reduced-motion: reduce) {
+  .skill-badge { --mx: 0; --my: 0; }
+}
+
+/* About section – 3-photo polaroid collage with pull-out hover */
+.about-photo-collage {
+  position: relative;
+  width: 560px;
+  height: 640px;
+}
+.about-photo {
+  position: absolute;
+  background: white;
+  padding: 10px 10px 42px 10px;
+  border-radius: 2px;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.08),
+    0 10px 20px -5px rgba(0, 0, 0, 0.1),
+    2px 4px 8px -2px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+}
+.about-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.5rem;
+}
+.polaroid-caption {
+  position: absolute;
+  bottom: 14px;
+  left: 12px;
+  right: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #3d4720;
+  text-align: center;
+  line-height: 1.3;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.about-photo-main {
+  width: 330px;
+  height: 395px;
+  top: 0;
+  left: 95px;
+  z-index: 2;
+  transform: rotate(-4deg);
+}
+.about-photo-main img { object-position: center 25%; }
+.about-photo-accent {
+  width: 270px;
+  height: 340px;
+  bottom: 35px;
+  left: 25px;
+  z-index: 1;
+  transform: rotate(3deg);
+}
+.about-photo-accent img { object-position: center 30%; }
+.about-photo-third {
+  width: 245px;
+  height: 305px;
+  bottom: 65px;
+  right: 25px;
+  z-index: 0;
+  transform: rotate(-2deg);
+}
+.about-photo-third img { object-position: center 60%; }
+/* When hovering: hovered polaroid comes to front, others dim */
+.about-photo-collage:hover .about-photo:not(:hover) {
+  opacity: 0.45;
+}
+.about-photo:hover {
+  transform: translateY(-10px) scale(1.03) rotate(0deg);
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.15),
+    0 20px 40px -10px rgba(0, 0, 0, 0.12),
+    4px 8px 16px -4px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+}
+
+/* Hero photo – larger size, hover scale + ripple effect */
+.hero-photo-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-photo-wrap::before,
+.hero-photo-wrap::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid rgba(90, 107, 45, 0.4);
+  opacity: 0;
+  pointer-events: none;
+}
+.hero-photo-wrap:hover::before {
+  animation: hero-ripple 1.2s ease-out;
+}
+.hero-photo-wrap:hover::after {
+  animation: hero-ripple 1.2s ease-out 0.3s;
+}
+@keyframes hero-ripple {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+.hero-photo {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hero-photo-wrap:hover .hero-photo {
+  transform: scale(1.06);
+  box-shadow: 0 25px 50px -12px rgba(90, 107, 45, 0.25);
+}
+
+/* Hero section – smaller circular icon links */
+.hero-contact-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  border: 1.5px solid #9aa86b;
+  background-color: #fafaf9;
+  color: #5a6b2d;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.hero-contact-icon:hover {
+  transform: scale(1.08);
+  background-color: #e8edd8;
+  border-color: #5a6b2d;
+  color: #4a5825;
+}
+
+/* Certifications – filter buttons */
+.cert-filter {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #5a6b2d;
+  background-color: #fafaf9;
+  border: 1.5px solid #d4dcb8;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+.cert-filter:hover {
+  background-color: #e8edd8;
+  border-color: #9aa86b;
+}
+.cert-filter.active {
+  background-color: #5a6b2d;
+  border-color: #5a6b2d;
+  color: white;
+}
+
+/* Certifications – cert item (image in main box, tiled → straighten on hover) */
+.cert-item {
+  max-width: 200px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.cert-item.hidden {
+  display: none;
+}
+.cert-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  object-position: center;
+  background: white;
+  border-radius: 0.5rem;
+  border: 1px solid #e7e5e4;
+  box-shadow: 0 4px 12px -6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+/* Tiled / tilted by default – alternating rotations */
+.cert-item:nth-child(4n+1) .cert-image { transform: rotate(-5deg); }
+.cert-item:nth-child(4n+2) .cert-image { transform: rotate(3deg); }
+.cert-item:nth-child(4n+3) .cert-image { transform: rotate(-3deg); }
+.cert-item:nth-child(4n+4) .cert-image { transform: rotate(4deg); }
+.cert-item:hover .cert-image {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.2);
+}
+
+/* Certifications – PDF link wrapper */
+.cert-link {
+  display: block;
+  position: relative;
+  text-decoration: none;
+}
+.cert-pdf-badge {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: white;
+  background: #5a6b2d;
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.25rem;
+  letter-spacing: 0.05em;
+}
+
+/* Certifications – modal (lightbox) */
+.cert-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.cert-modal.hidden {
+  display: none;
+}
+.cert-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+.cert-modal-content {
+  position: relative;
+  background: white;
+  border-radius: 1rem;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  border: 1px solid #e7e5e4;
+}
+.cert-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background: #fafaf9;
+  border-bottom: 1px solid #e7e5e4;
+}
+.cert-modal-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #3d4720;
+}
+.cert-modal-close {
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #64748b;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  transition: color 0.2s, background 0.2s;
+}
+.cert-modal-close:hover {
+  color: #3d4720;
+  background: #e8edd8;
+}
+.cert-modal-body {
+  padding: 1.5rem;
+  overflow: auto;
+  max-height: calc(90vh - 4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.cert-modal-image {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 0.5rem;
+}
+.cert-modal-pdf-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: white;
+  background: #5a6b2d;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.cert-modal-pdf-link:hover {
+  background: #4a5825;
+}
+.cert-modal-pdf-link.hidden {
+  display: none;
+}
+
+/* Contact section – circular icon links */
+.contact-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  border: 2px solid #9aa86b; /* olive-400 */
+  background-color: #fafaf9; /* stone-50 */
+  color: #5a6b2d; /* olive-600 */
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.contact-icon:hover {
+  transform: scale(1.08);
+  background-color: #e8edd8; /* olive-100 */
+  border-color: #5a6b2d;
+  color: #4a5825; /* olive-700 */
+}
+
+/* Button Transition */
+.btn-transition {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.btn-transition:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive Nav Toggle (mobile) */
+#nav-toggle:checked + ul {
+  display: block;
+}
+@media (max-width: 768px) {
+  ul.md\:flex {
+    display: none;
+  }
+}
