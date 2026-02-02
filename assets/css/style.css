@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base typography – DM Sans */
+body {
+  font-family: 'DM Sans', sans-serif;
+}
+
 /* Custom Scrollbar Styling */
 ::-webkit-scrollbar {
   width: 8px;
@@ -417,5 +422,9 @@ nav a.active {
 @media (max-width: 768px) {
   ul.md\:flex {
     display: none;
+  }
+  .container {
+    width: 80%;
+    max-width: none;
   }
 }
