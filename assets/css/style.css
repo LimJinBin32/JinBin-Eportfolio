@@ -428,3 +428,26 @@ nav a.active {
     max-width: none;
   }
 }
+
+/* About polaroid collage: smaller and contained on mobile */
+@media (max-width: 640px) {
+  .about-collage-wrap {
+    height: 352px; /* 640 × 0.55 */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+  }
+  .about-photo-collage {
+    transform: scale(0.55);
+    transform-origin: top center;
+  }
+}
+@media (max-width: 480px) {
+  .about-collage-wrap {
+    height: 288px; /* 640 × 0.45 – smaller on narrow phones */
+  }
+  .about-photo-collage {
+    transform: scale(0.45);
+    transform-origin: top center;
+  }
+}
