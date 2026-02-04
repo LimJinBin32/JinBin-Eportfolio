@@ -9,12 +9,11 @@ Personal portfolio website showcasing my projects, skills, and experience in **A
 ## Features
 
 - **About** — Bio, academic metrics (CGPA, awards), and an interactive typewriter
-- **Skills** — Grouped by category (AI & ML, Data Engineering, Web Dev, IOT, Cloud) with a subtle magnetic hover effect
-- **Certifications** — Filterable grid (Industry, Online, Awards) with a lightbox for certificates
+- **Skills** — Grouped by category (AI & ML, Data Engineering, Web Dev, IOT, Cloud)
+- **Certifications** — Filterable grid (Industry, Online, Awards) for certificates
 - **Projects** — Project cards with covers, tech tags, and links to GitHub/demos
 - **Testimonials** — Recommendation and referral excerpts with PDF links
 - **Contact** — Links to GitHub, LinkedIn, and email
-- **Responsive** — Mobile-friendly layout with a hamburger menu and scaled image collage on small screens
 
 ---
 
