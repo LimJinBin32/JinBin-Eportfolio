@@ -144,7 +144,8 @@ nav a.active {
   width: 245px;
   height: 305px;
   bottom: 65px;
-  right: 25px;
+  left: 290px; /* 560 - 245 - 25, so it stays fixed when scaled/centered */
+  right: auto;
   z-index: 0;
   transform: rotate(-2deg);
 }
@@ -261,7 +262,7 @@ nav a.active {
   aspect-ratio: 4 / 3;
   object-fit: contain;
   object-position: center;
-  background: white;
+  background: #f5f5f4; /* stone-100 – matches cert section so “white space” blends in */
   border-radius: 0.5rem;
   border: 1px solid #e7e5e4;
   box-shadow: 0 4px 12px -6px rgba(0, 0, 0, 0.15);
@@ -429,25 +430,28 @@ nav a.active {
   }
 }
 
-/* About polaroid collage: smaller and contained on mobile */
+/* About polaroid collage: smaller and contained on mobile, fully visible and centered */
 @media (max-width: 640px) {
   .about-collage-wrap {
+    width: min(364px, calc(100vw - 48px)); /* 560 × 0.65, or fit viewport on very narrow */
     height: 416px; /* 640 × 0.65 */
+    margin: 0 auto;
     overflow: hidden;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* align collage to left so scaled output isn’t clipped */
   }
   .about-photo-collage {
     transform: scale(0.65);
-    transform-origin: top center;
+    transform-origin: top left; /* scale from top-left so full 364×416 fits in wrapper, no right cutoff */
   }
 }
 @media (max-width: 480px) {
   .about-collage-wrap {
-    height: 416px; /* 640 × 0.65 */
+    width: min(364px, calc(100vw - 48px));
+    height: 416px;
   }
   .about-photo-collage {
     transform: scale(0.65);
-    transform-origin: top center;
+    transform-origin: top left;
   }
 }
