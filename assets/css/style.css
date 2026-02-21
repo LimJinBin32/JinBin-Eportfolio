@@ -47,6 +47,48 @@ nav a.active {
   box-shadow: 0 10px 15px -3px rgba(90, 107, 45, 0.15);
 }
 
+/* Projects section polish */
+#projects .grid > div {
+  display: flex;
+  flex-direction: column;
+}
+#projects .grid > div > .p-6 {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+#projects .grid > div > .p-6 > p.text-gray-600 {
+  flex: 1;
+}
+#projects .grid > div > img {
+  object-fit: cover;
+  object-position: center top;
+}
+#projects .grid .project-card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+#projects .grid .project-card-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid #b8c490;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #5a6b2d;
+  background: #f5f7f0;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+#projects .grid .project-card-links a:hover {
+  background: #e8edd8;
+  border-color: #9aa86b;
+  color: #4a5825;
+}
+
 /* Section Title spacing */
 .section-title {
   position: static;
